@@ -5,8 +5,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl git xvfb libglib2.0-0 libnss3 libatk1.0-0 libatk-bridge2.0-0 \
         libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 \
         libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 \
-        libxshmfence1 fonts-noto-cjk xauth \
+        libxshmfence1 fonts-noto-cjk xauth x11-apps \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSfL \
+        https://github.com/go-gost/gost/releases/latest/download/gost-linux-amd64 \
+        -o /usr/local/bin/gost \
+    && sudo chmod +x /usr/local/bin/gost
 
 WORKDIR /app
 
