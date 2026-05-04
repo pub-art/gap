@@ -17,9 +17,9 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   if (to.path === "/setup" || to.path === "/login") return true;
   try {
-    const r = await fetch(BASE + "api/setup/status").then((x) => x.json());
+    const r = await fetch("/api/setup/status").then((x) => x.json());
     if (!r.initialized) return "/setup";
-    const me = await fetch(BASE + "api/me", { credentials: "include" });
+    const me = await fetch("/api/me", { credentials: "include" });
     if (me.status === 401) return "/login";
   } catch {
     return "/login";
