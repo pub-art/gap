@@ -34,6 +34,11 @@ RUN cd webui/frontend && pnpm install --frozen-lockfile
 COPY webui/frontend/ webui/frontend/
 RUN cd webui/frontend && pnpm build
 
+COPY webui/whatsapp_relay/package.json webui/whatsapp_relay/package-lock.json* webui/whatsapp_relay/
+RUN cd webui/whatsapp_relay && npm ci
+
+COPY webui/whatsapp_relay/ webui/whatsapp_relay/
+
 COPY . .
 
 RUN mkdir -p output/logs
