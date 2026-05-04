@@ -760,7 +760,7 @@ async function stop() {
 
 function openStream() {
   if (eventSource) eventSource.close();
-  const url = import.meta.env.BASE_URL + "api/run/stream";
+  const url = "/api/run/stream";
   eventSource = new EventSource(url, { withCredentials: true });
   eventSource.addEventListener("line", (e) => {
     try {
