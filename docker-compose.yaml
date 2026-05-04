@@ -9,9 +9,11 @@ services:
       - type: bind
         source: ./CTF-pay/config.paypal.json
         target: /app/CTF-pay/config.paypal.json
+        create_host_path: false
       - type: bind
         source: ./CTF-reg/config.paypal-proxy.json
         target: /app/CTF-reg/config.paypal-proxy.json
+        create_host_path: false
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
