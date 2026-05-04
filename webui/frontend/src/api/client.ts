@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE = import.meta.env.BASE_URL; // e.g. "/webui/" or "/"
 
 export const api = axios.create({
-  baseURL: BASE + "api",
+  baseURL: "/api",
   withCredentials: true,
 });
 
