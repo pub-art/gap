@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-COPY ../webui/requirements.txt webui/
+COPY webui/requirements.txt webui/
 
 RUN pip install --no-cache-dir \
         requests curl_cffi playwright camoufox browserforge mitmproxy pybase64 \
@@ -28,10 +28,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource.sh \
     && rm -f /tmp/nodesource.sh \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ../webui/frontend/package.json ../webui/frontend/pnpm-lock.yaml* webui/frontend/
+COPY webui/frontend/package.json webui/frontend/pnpm-lock.yaml* webui/frontend/
 RUN cd webui/frontend && pnpm install --frozen-lockfile
 
-COPY ../webui/frontend/ webui/frontend/
+COPY webui/frontend/ webui/frontend/
 RUN cd webui/frontend && pnpm build
 
 COPY . .
