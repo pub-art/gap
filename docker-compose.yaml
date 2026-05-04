@@ -4,8 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
       target: webui
-    ports:
-      - "8765:8765"
     volumes:
       - ./output:/app/output
       - ./CTF-pay/config.paypal.json:/app/CTF-pay/config.paypal.json:ro
