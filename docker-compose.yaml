@@ -6,8 +6,12 @@ services:
       target: webui
     volumes:
       - ./output:/app/output
-      - ./CTF-pay/config.paypal.json:/app/CTF-pay/config.paypal.json:ro
-      - ./CTF-reg/config.paypal-proxy.json:/app/CTF-reg/config.paypal-proxy.json:ro
+      - type: bind
+        source: ./CTF-pay/config.paypal.json
+        target: /app/CTF-pay/config.paypal.json
+      - type: bind
+        source: ./CTF-reg/config.paypal-proxy.json
+        target: /app/CTF-reg/config.paypal-proxy.json
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
