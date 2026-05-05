@@ -23,7 +23,7 @@ WORKDIR /app
 COPY webui/requirements.txt webui/
 
 RUN pip install --no-cache-dir \
-        requests curl_cffi playwright camoufox browserforge mitmproxy pybase64 \
+        requests curl_cffi playwright camoufox[geoip] browserforge mitmproxy pybase64 \
     && pip install --no-cache-dir -r webui/requirements.txt \
     && playwright install firefox chromium \
     && camoufox fetch
