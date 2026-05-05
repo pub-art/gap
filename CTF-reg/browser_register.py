@@ -111,6 +111,8 @@ def browser_register(cfg, mail_provider) -> dict:
     logger.info(f"[browser-reg] 密码: {password}  姓名: {first_name} {last_name}")
 
     cf_proxy = _parse_proxy(cfg.proxy)
+    logger.info(f"[browser-reg] using proxy: {cfg.proxy} -> {cf_proxy}")
+
     has_display = bool(os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY"))
 
     tmp_profile = tempfile.mkdtemp(prefix="chatgpt_reg_")
