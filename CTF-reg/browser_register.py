@@ -130,7 +130,7 @@ def browser_register(cfg, mail_provider) -> dict:
 
     try:
         with Camoufox(
-            headless=not has_display,
+            headless=False if has_display else "virtual",
             humanize=True,
             persistent_context=True,
             user_data_dir=tmp_profile,

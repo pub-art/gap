@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir \
         requests curl_cffi playwright camoufox[geoip] browserforge mitmproxy pybase64 \
     && pip install --no-cache-dir -r webui/requirements.txt \
     && playwright install firefox chromium \
-    && camoufox fetch
+    && python -m camoufox fetch
 
 # ── Stage 2: webui (frontend build + runtime) ─────────────────
 FROM base AS webui
