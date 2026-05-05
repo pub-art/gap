@@ -8,10 +8,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxshmfence1 fonts-noto-cjk xauth x11-apps \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sSfL \
-        https://github.com/go-gost/gost/releases/latest/download/gost-linux-amd64 \
-        -o /usr/local/bin/gost \
-    && sudo chmod +x /usr/local/bin/gost
+RUN curl -s https://api.github.com/repos/go-gost/gost/releases/latest \
+        | grep '"browser_download_url":' \
+        | grep 'linux_amd64.tar.gz' \
+        | grep -o 'https://[^"]*' \
+        | head -n 1 \
+        | xargs -I {} curl -sSfL {} \
+        | tar zx \
+    && mv gost /usr/local/bin/gost \
+    && chmod +x /usr/local/bin/gost
 
 WORKDIR /app
 
